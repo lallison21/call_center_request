@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "github.com/lallison21/call_center_request/protos/auth_service";
+
+package auth_service;
+
+message RegisterRequest {
+  string login = 1;
+  string password = 2;
+  string password_confirmation = 3;
+}
+
+message UserId {
+  int32 id = 1;
+}
+
+message LoginRequest {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+service AuthService {
+  rpc Register(RegisterRequest) returns (UserId);
+  rpc Login(LoginRequest) returns (LoginRequest);
+}
